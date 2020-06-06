@@ -19,3 +19,5 @@ Nice to have...
 2. Persistence storage via API
 
 Lets go!!
+
+using https://elmprogramming.com/building-a-simple-page-in-elm.html as a guide
