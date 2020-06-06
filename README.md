@@ -21,3 +21,12 @@ Nice to have...
 Lets go!!
 
 using https://elmprogramming.com/building-a-simple-page-in-elm.html as a guide
+
+
+Building:
+    elm make src/HomePage.elm --output elm.js
+
+git add, commit, push and then...
+
+https://htmlpreview.github.io/?https://github.com/lancew/race/blob/master/index.html
+^ Lets you see the page
