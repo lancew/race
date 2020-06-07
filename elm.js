@@ -4355,7 +4355,6 @@ function _Browser_load(url)
 		}
 	}));
 }
-var $author$project$HomePage$init = {week: 1, weeks: 12, yacht1Progress: 1, yacht2Progress: 1, yacht3Progress: 1};
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
 var $elm$core$Basics$LT = {$: 'LT'};
@@ -5144,67 +5143,73 @@ var $elm$core$Task$perform = F2(
 			$elm$core$Task$Perform(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
+var $elm$browser$Browser$element = _Browser_element;
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
+var $author$project$HomePage$init = function (_v0) {
+	return _Utils_Tuple2(
+		{week: 1, weeks: 12, yacht1Progress: 1, yacht2Progress: 1, yacht3Progress: 1},
+		$elm$core$Platform$Cmd$none);
+};
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
-var $elm$browser$Browser$sandbox = function (impl) {
-	return _Browser_element(
-		{
-			init: function (_v0) {
-				return _Utils_Tuple2(impl.init, $elm$core$Platform$Cmd$none);
-			},
-			subscriptions: function (_v1) {
-				return $elm$core$Platform$Sub$none;
-			},
-			update: F2(
-				function (msg, model) {
-					return _Utils_Tuple2(
-						A2(impl.update, msg, model),
-						$elm$core$Platform$Cmd$none);
-				}),
-			view: impl.view
-		});
-};
 var $author$project$HomePage$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
 			case 'IncrementWeek':
-				return _Utils_update(
-					model,
-					{week: model.week + 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{week: model.week + 1}),
+					$elm$core$Platform$Cmd$none);
 			case 'DecrementWeek':
-				return _Utils_update(
-					model,
-					{week: model.week - 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{week: model.week - 1}),
+					$elm$core$Platform$Cmd$none);
 			case 'IncrementYacht1':
-				return _Utils_update(
-					model,
-					{yacht1Progress: model.yacht1Progress + 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{yacht1Progress: model.yacht1Progress + 1}),
+					$elm$core$Platform$Cmd$none);
 			case 'DecrementYacht1':
-				return _Utils_update(
-					model,
-					{yacht1Progress: model.yacht1Progress - 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{yacht1Progress: model.yacht1Progress - 1}),
+					$elm$core$Platform$Cmd$none);
 			case 'IncrementYacht2':
-				return _Utils_update(
-					model,
-					{yacht2Progress: model.yacht2Progress + 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{yacht2Progress: model.yacht2Progress + 1}),
+					$elm$core$Platform$Cmd$none);
 			case 'DecrementYacht2':
-				return _Utils_update(
-					model,
-					{yacht2Progress: model.yacht2Progress - 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{yacht2Progress: model.yacht2Progress - 1}),
+					$elm$core$Platform$Cmd$none);
 			case 'IncrementYacht3':
-				return _Utils_update(
-					model,
-					{yacht3Progress: model.yacht3Progress + 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{yacht3Progress: model.yacht3Progress + 1}),
+					$elm$core$Platform$Cmd$none);
 			case 'DecrementYacht3':
-				return _Utils_update(
-					model,
-					{yacht3Progress: model.yacht3Progress - 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{yacht3Progress: model.yacht3Progress - 1}),
+					$elm$core$Platform$Cmd$none);
 			default:
-				return _Utils_update(
-					model,
-					{week: 1, yacht1Progress: 1, yacht2Progress: 1, yacht3Progress: 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{week: 1, yacht1Progress: 1, yacht2Progress: 1, yacht3Progress: 1}),
+					$elm$core$Platform$Cmd$none);
 		}
 	});
 var $author$project$HomePage$DecrementWeek = {$: 'DecrementWeek'};
@@ -5484,7 +5489,14 @@ var $author$project$HomePage$view = function (model) {
 					]))
 			]));
 };
-var $author$project$HomePage$main = $elm$browser$Browser$sandbox(
-	{init: $author$project$HomePage$init, update: $author$project$HomePage$update, view: $author$project$HomePage$view});
+var $author$project$HomePage$main = $elm$browser$Browser$element(
+	{
+		init: $author$project$HomePage$init,
+		subscriptions: function (_v0) {
+			return $elm$core$Platform$Sub$none;
+		},
+		update: $author$project$HomePage$update,
+		view: $author$project$HomePage$view
+	});
 _Platform_export({'HomePage':{'init':$author$project$HomePage$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
