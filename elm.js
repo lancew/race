@@ -5153,6 +5153,8 @@ var $author$project$HomePage$init = function (_v0) {
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
+var $elm$json$Json$Encode$string = _Json_wrap;
+var $author$project$HomePage$sendData = _Platform_outgoingPort('sendData', $elm$json$Json$Encode$string);
 var $author$project$HomePage$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
@@ -5161,49 +5163,57 @@ var $author$project$HomePage$update = F2(
 					_Utils_update(
 						model,
 						{week: model.week + 1}),
-					$elm$core$Platform$Cmd$none);
+					$author$project$HomePage$sendData(
+						'Week:' + $elm$core$String$fromInt(model.week + 1)));
 			case 'DecrementWeek':
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{week: model.week - 1}),
-					$elm$core$Platform$Cmd$none);
+					$author$project$HomePage$sendData(
+						'Week:' + $elm$core$String$fromInt(model.week - 1)));
 			case 'IncrementYacht1':
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{yacht1Progress: model.yacht1Progress + 1}),
-					$elm$core$Platform$Cmd$none);
+					$author$project$HomePage$sendData(
+						'Yacht1:' + $elm$core$String$fromInt(model.yacht1Progress + 1)));
 			case 'DecrementYacht1':
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{yacht1Progress: model.yacht1Progress - 1}),
-					$elm$core$Platform$Cmd$none);
+					$author$project$HomePage$sendData(
+						'Yacht1:' + $elm$core$String$fromInt(model.yacht1Progress - 1)));
 			case 'IncrementYacht2':
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{yacht2Progress: model.yacht2Progress + 1}),
-					$elm$core$Platform$Cmd$none);
+					$author$project$HomePage$sendData(
+						'Yacht2:' + $elm$core$String$fromInt(model.yacht2Progress + 1)));
 			case 'DecrementYacht2':
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{yacht2Progress: model.yacht2Progress - 1}),
-					$elm$core$Platform$Cmd$none);
+					$author$project$HomePage$sendData(
+						'Yacht2:' + $elm$core$String$fromInt(model.yacht2Progress - 1)));
 			case 'IncrementYacht3':
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{yacht3Progress: model.yacht3Progress + 1}),
-					$elm$core$Platform$Cmd$none);
+					$author$project$HomePage$sendData(
+						'Yacht3:' + $elm$core$String$fromInt(model.yacht3Progress + 1)));
 			case 'DecrementYacht3':
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{yacht3Progress: model.yacht3Progress - 1}),
-					$elm$core$Platform$Cmd$none);
+					$author$project$HomePage$sendData(
+						'Yacht3:' + $elm$core$String$fromInt(model.yacht3Progress - 1)));
 			default:
 				return _Utils_Tuple2(
 					_Utils_update(
@@ -5222,7 +5232,6 @@ var $author$project$HomePage$IncrementYacht2 = {$: 'IncrementYacht2'};
 var $author$project$HomePage$IncrementYacht3 = {$: 'IncrementYacht3'};
 var $author$project$HomePage$ResetAll = {$: 'ResetAll'};
 var $elm$html$Html$button = _VirtualDom_node('button');
-var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
 		return A2(

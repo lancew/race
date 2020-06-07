@@ -1,7 +1,9 @@
 <html>
   <head>
-    <link rel="stylesheet" 
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
 
     <style>
       .jumbotron {
@@ -13,12 +15,20 @@
 
   <body>
     <div id="elm-app-is-loaded-here"></div>
-    
+
     <script src="elm.js"></script>
     <script>
+      var flags = { weeks: 12 }
       var app = Elm.HomePage.init({
-        node: document.getElementById("elm-app-is-loaded-here")
-      });      
+        node: document.getElementById('elm-app-is-loaded-here')
+      })
+
+      app.ports.sendData.subscribe(function (data) {
+        var res = data.split(":");
+        console.log(res);
+        localStorage.setItem(res[0], res[1]);
+
+      })
     </script>
   </body>
 </html>
