@@ -4,13 +4,14 @@ import Browser
 import Html exposing (Html, button, div, h1, hr, p, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
-import String exposing (repeat)
+import String exposing (fromInt)
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
 
 
+main : Program () Model Msg
 main =
-    Browser.sandbox { init = init, update = update, view = view }
+    Browser.element { init = init, update = update, view = view, subscriptions = \_ -> Sub.none }
 
 
 type alias Model =
@@ -22,14 +23,16 @@ type alias Model =
     }
 
 
-init : Model
-init =
-    { weeks = 12
-    , week = 1
-    , yacht1Progress = 1
-    , yacht2Progress = 1
-    , yacht3Progress = 1
-    }
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( { weeks = 12
+      , week = 1
+      , yacht1Progress = 1
+      , yacht2Progress = 1
+      , yacht3Progress = 1
+      }
+    , Cmd.none
+    )
 
 
 type Msg
@@ -44,35 +47,35 @@ type Msg
     | ResetAll
 
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         IncrementWeek ->
-            { model | week = model.week + 1 }
+            ( { model | week = model.week + 1 }, Cmd.none )
 
         DecrementWeek ->
-            { model | week = model.week - 1 }
+            ( { model | week = model.week - 1 }, Cmd.none )
 
         IncrementYacht1 ->
-            { model | yacht1Progress = model.yacht1Progress + 1 }
+            ( { model | yacht1Progress = model.yacht1Progress + 1 }, Cmd.none )
 
         DecrementYacht1 ->
-            { model | yacht1Progress = model.yacht1Progress - 1 }
+            ( { model | yacht1Progress = model.yacht1Progress - 1 }, Cmd.none )
 
         IncrementYacht2 ->
-            { model | yacht2Progress = model.yacht2Progress + 1 }
+            ( { model | yacht2Progress = model.yacht2Progress + 1 }, Cmd.none )
 
         DecrementYacht2 ->
-            { model | yacht2Progress = model.yacht2Progress - 1 }
+            ( { model | yacht2Progress = model.yacht2Progress - 1 }, Cmd.none )
 
         IncrementYacht3 ->
-            { model | yacht3Progress = model.yacht3Progress + 1 }
+            ( { model | yacht3Progress = model.yacht3Progress + 1 }, Cmd.none )
 
         DecrementYacht3 ->
-            { model | yacht3Progress = model.yacht3Progress - 1 }
+            ( { model | yacht3Progress = model.yacht3Progress - 1 }, Cmd.none )
 
         ResetAll ->
-            { model | week = 1, yacht1Progress = 1, yacht2Progress = 1, yacht3Progress = 1 }
+            ( { model | week = 1, yacht1Progress = 1, yacht2Progress = 1, yacht3Progress = 1 }, Cmd.none )
 
 
 view : Model -> Html Msg
