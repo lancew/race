@@ -32,6 +32,12 @@ init =
 type Msg
     = IncrementWeek
     | DecrementWeek
+    | IncrementYacht1
+    | DecrementYacht1
+    | IncrementYacht2
+    | DecrementYacht2
+    | IncrementYacht3
+    | DecrementYacht3
 
 
 update : Msg -> Model -> Model
@@ -42,6 +48,25 @@ update msg model =
 
         DecrementWeek ->
             { model | week = model.week - 1 }
+
+        IncrementYacht1 ->
+            { model | yacht1Progress = model.yacht1Progress + 1 }
+
+        DecrementYacht1 ->
+            { model | yacht1Progress = model.yacht1Progress - 1 }
+
+        IncrementYacht2 ->
+            { model | yacht2Progress = model.yacht2Progress + 1 }
+
+        DecrementYacht2 ->
+            { model | yacht2Progress = model.yacht2Progress - 1 }
+        
+        IncrementYacht3 ->
+            { model | yacht3Progress = model.yacht3Progress + 1 }
+
+        DecrementYacht3 ->
+            { model | yacht3Progress = model.yacht3Progress - 1 }
+
 
 
 view : Model -> Html Msg
@@ -60,5 +85,20 @@ view model =
             [ text "Week : "
             , button [ onClick IncrementWeek ] [ text "+" ]
             , button [ onClick DecrementWeek ] [ text "-" ]
+            ]
+        , p []
+            [ text "Yacht 1 : "
+            , button [ onClick IncrementYacht1 ] [ text "+" ]
+            , button [ onClick DecrementYacht1 ] [ text "-" ]
+            ]
+        , p []
+            [ text "Yacht 2 : "
+            , button [ onClick IncrementYacht2 ] [ text "+" ]
+            , button [ onClick DecrementYacht2 ] [ text "-" ]
+            ]
+        , p []
+            [ text "Yacht 3 : "
+            , button [ onClick IncrementYacht3 ] [ text "+" ]
+            , button [ onClick DecrementYacht3 ] [ text "-" ]
             ]
         ]
