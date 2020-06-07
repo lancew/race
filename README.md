@@ -7,6 +7,12 @@ Yachts have to get from left to right, over a 24 week time line.
 Their should be some sort of "ghost ship" that shows where they would be if
 on simple distance/24 weeks schedule.
 
+Looks a bit like this:
+
+![Screenshot of the User Interface](https://github.com/lancew/race/raw/master//race_2-2--607.png "UI Version 1")
+
+
+
 UI... 
 1. Week increment/decrement
 2. Yacht 1, travel ++/--

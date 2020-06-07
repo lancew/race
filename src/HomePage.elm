@@ -134,7 +134,7 @@ view model =
             ]
         , hr [] []
         , p []
-            [ Html.text "Week : "
+            [ Html.text ("Week : " ++ String.fromInt model.week ++ " / " ++ String.fromInt model.weeks)
             , button [ onClick IncrementWeek ] [ Html.text "+" ]
             , button [ onClick DecrementWeek ] [ Html.text "-" ]
             ]
