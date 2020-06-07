@@ -41,5 +41,7 @@ https://htmlpreview.github.io/?https://github.com/lancew/race/blob/master/index.
 
 Travis:
 
+[![Build Status](https://travis-ci.org/lancew/race.svg?branch=master)](https://travis-ci.org/lancew/race)
+
 https://travis-ci.org/github/lancew/race
 
