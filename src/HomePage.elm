@@ -41,6 +41,7 @@ type Msg
     | DecrementYacht2
     | IncrementYacht3
     | DecrementYacht3
+    | ResetAll
 
 
 update : Msg -> Model -> Model
@@ -69,6 +70,9 @@ update msg model =
 
         DecrementYacht3 ->
             { model | yacht3Progress = model.yacht3Progress - 1 }
+
+        ResetAll ->
+            { model | week = 1, yacht1Progress = 1, yacht2Progress = 1, yacht3Progress = 1 }
 
 
 view : Model -> Html Msg
@@ -152,5 +156,8 @@ view model =
             [ Html.text ("Yacht 3 : " ++ String.fromInt model.yacht3Progress)
             , button [ onClick IncrementYacht3 ] [ Html.text "+" ]
             , button [ onClick DecrementYacht3 ] [ Html.text "-" ]
+            ]
+        , p []
+            [ button [ onClick ResetAll ] [ Html.text "RESET" ]
             ]
         ]
