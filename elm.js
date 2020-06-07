@@ -5197,10 +5197,14 @@ var $author$project$HomePage$update = F2(
 				return _Utils_update(
 					model,
 					{yacht3Progress: model.yacht3Progress + 1});
-			default:
+			case 'DecrementYacht3':
 				return _Utils_update(
 					model,
 					{yacht3Progress: model.yacht3Progress - 1});
+			default:
+				return _Utils_update(
+					model,
+					{week: 1, yacht1Progress: 1, yacht2Progress: 1, yacht3Progress: 1});
 		}
 	});
 var $author$project$HomePage$DecrementWeek = {$: 'DecrementWeek'};
@@ -5211,6 +5215,7 @@ var $author$project$HomePage$IncrementWeek = {$: 'IncrementWeek'};
 var $author$project$HomePage$IncrementYacht1 = {$: 'IncrementYacht1'};
 var $author$project$HomePage$IncrementYacht2 = {$: 'IncrementYacht2'};
 var $author$project$HomePage$IncrementYacht3 = {$: 'IncrementYacht3'};
+var $author$project$HomePage$ResetAll = {$: 'ResetAll'};
 var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
@@ -5222,6 +5227,7 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$svg$Svg$Attributes$fill = _VirtualDom_attribute('fill');
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$svg$Svg$Attributes$height = _VirtualDom_attribute('height');
 var $elm$html$Html$hr = _VirtualDom_node('hr');
@@ -5300,7 +5306,8 @@ var $author$project$HomePage$view = function (model) {
 								$elm$svg$Svg$Attributes$y('21'),
 								$elm$svg$Svg$Attributes$width(
 								$elm$core$String$fromInt(model.week * 100)),
-								$elm$svg$Svg$Attributes$height('10')
+								$elm$svg$Svg$Attributes$height('10'),
+								$elm$svg$Svg$Attributes$fill('grey')
 							]),
 						_List_Nil),
 						A2(
@@ -5313,7 +5320,8 @@ var $author$project$HomePage$view = function (model) {
 								$elm$core$String$fromInt(model.yacht1Progress * 100)),
 								$elm$svg$Svg$Attributes$height('50'),
 								$elm$svg$Svg$Attributes$rx('15'),
-								$elm$svg$Svg$Attributes$ry('15')
+								$elm$svg$Svg$Attributes$ry('15'),
+								$elm$svg$Svg$Attributes$fill('red')
 							]),
 						_List_Nil),
 						A2(
@@ -5326,7 +5334,8 @@ var $author$project$HomePage$view = function (model) {
 								$elm$core$String$fromInt(model.yacht2Progress * 100)),
 								$elm$svg$Svg$Attributes$height('50'),
 								$elm$svg$Svg$Attributes$rx('15'),
-								$elm$svg$Svg$Attributes$ry('15')
+								$elm$svg$Svg$Attributes$ry('15'),
+								$elm$svg$Svg$Attributes$fill('green')
 							]),
 						_List_Nil),
 						A2(
@@ -5339,7 +5348,8 @@ var $author$project$HomePage$view = function (model) {
 								$elm$core$String$fromInt(model.yacht3Progress * 100)),
 								$elm$svg$Svg$Attributes$height('50'),
 								$elm$svg$Svg$Attributes$rx('15'),
-								$elm$svg$Svg$Attributes$ry('15')
+								$elm$svg$Svg$Attributes$ry('15'),
+								$elm$svg$Svg$Attributes$fill('blue')
 							]),
 						_List_Nil)
 					])),
@@ -5349,7 +5359,8 @@ var $author$project$HomePage$view = function (model) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Week : '),
+						$elm$html$Html$text(
+						'Week : ' + ($elm$core$String$fromInt(model.week) + (' / ' + $elm$core$String$fromInt(model.weeks)))),
 						A2(
 						$elm$html$Html$button,
 						_List_fromArray(
@@ -5453,6 +5464,22 @@ var $author$project$HomePage$view = function (model) {
 						_List_fromArray(
 							[
 								$elm$html$Html$text('-')
+							]))
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$button,
+						_List_fromArray(
+							[
+								$elm$html$Html$Events$onClick($author$project$HomePage$ResetAll)
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('RESET')
 							]))
 					]))
 			]));

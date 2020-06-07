@@ -100,6 +100,7 @@ view model =
                 , y "21"
                 , width (String.fromInt (model.week * 100))
                 , height "10"
+                , fill "grey"
                 ]
                 []
 
@@ -111,6 +112,7 @@ view model =
                 , height "50"
                 , rx "15"
                 , ry "15"
+                , fill "red"
                 ]
                 []
 
@@ -122,6 +124,7 @@ view model =
                 , height "50"
                 , rx "15"
                 , ry "15"
+                , fill "green"
                 ]
                 []
 
@@ -133,6 +136,7 @@ view model =
                 , height "50"
                 , rx "15"
                 , ry "15"
+                , fill "blue"
                 ]
                 []
             ]
