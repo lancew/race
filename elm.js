@@ -4355,6 +4355,43 @@ function _Browser_load(url)
 		}
 	}));
 }
+
+
+
+var _Bitwise_and = F2(function(a, b)
+{
+	return a & b;
+});
+
+var _Bitwise_or = F2(function(a, b)
+{
+	return a | b;
+});
+
+var _Bitwise_xor = F2(function(a, b)
+{
+	return a ^ b;
+});
+
+function _Bitwise_complement(a)
+{
+	return ~a;
+};
+
+var _Bitwise_shiftLeftBy = F2(function(offset, a)
+{
+	return a << offset;
+});
+
+var _Bitwise_shiftRightBy = F2(function(offset, a)
+{
+	return a >> offset;
+});
+
+var _Bitwise_shiftRightZfBy = F2(function(offset, a)
+{
+	return a >>> offset;
+});
 var $author$project$HomePage$init = {week: 1, weeks: 12, yacht1Progress: 1, yacht2Progress: 1, yacht3Progress: 1};
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
@@ -5242,6 +5279,20 @@ var $elm$html$Html$Events$onClick = function (msg) {
 		$elm$json$Json$Decode$succeed(msg));
 };
 var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$core$Bitwise$and = _Bitwise_and;
+var $elm$core$Bitwise$shiftRightBy = _Bitwise_shiftRightBy;
+var $elm$core$String$repeatHelp = F3(
+	function (n, chunk, result) {
+		return (n <= 0) ? result : A3(
+			$elm$core$String$repeatHelp,
+			n >> 1,
+			_Utils_ap(chunk, chunk),
+			(!(n & 1)) ? result : _Utils_ap(result, chunk));
+	});
+var $elm$core$String$repeat = F2(
+	function (n, chunk) {
+		return A3($elm$core$String$repeatHelp, n, chunk, '');
+	});
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$HomePage$view = function (model) {
@@ -5268,7 +5319,7 @@ var $author$project$HomePage$view = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
-						'Yacht 1: ' + $elm$core$String$fromInt(model.yacht1Progress))
+						A2($elm$core$String$repeat, model.week, '|||||'))
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -5276,7 +5327,7 @@ var $author$project$HomePage$view = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
-						'Yacht 2: ' + $elm$core$String$fromInt(model.yacht2Progress))
+						A2($elm$core$String$repeat, model.yacht1Progress, '-----') + 'Yacht 1')
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -5284,7 +5335,15 @@ var $author$project$HomePage$view = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
-						'Yacht 3: ' + $elm$core$String$fromInt(model.yacht3Progress))
+						A2($elm$core$String$repeat, model.yacht2Progress, '-----') + 'Yacht 2')
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text(
+						A2($elm$core$String$repeat, model.yacht3Progress, '-----') + 'Yacht 3')
 					])),
 				A2($elm$html$Html$hr, _List_Nil, _List_Nil),
 				A2(
@@ -5319,7 +5378,8 @@ var $author$project$HomePage$view = function (model) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Yacht 1 : '),
+						$elm$html$Html$text(
+						'Yacht 1 : ' + $elm$core$String$fromInt(model.yacht1Progress)),
 						A2(
 						$elm$html$Html$button,
 						_List_fromArray(
@@ -5346,7 +5406,8 @@ var $author$project$HomePage$view = function (model) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Yacht 2 : '),
+						$elm$html$Html$text(
+						'Yacht 2 : ' + $elm$core$String$fromInt(model.yacht2Progress)),
 						A2(
 						$elm$html$Html$button,
 						_List_fromArray(
@@ -5373,7 +5434,8 @@ var $author$project$HomePage$view = function (model) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Yacht 3 : '),
+						$elm$html$Html$text(
+						'Yacht 3 : ' + $elm$core$String$fromInt(model.yacht3Progress)),
 						A2(
 						$elm$html$Html$button,
 						_List_fromArray(
