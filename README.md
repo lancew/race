@@ -14,10 +14,10 @@ Looks a bit like this:
 
 
 UI... 
-1. Week increment/decrement
-2. Yacht 1, travel ++/--
-3. Yacht 2, travel ++/--
-4. Yacht 3, travel ++/--
+1. ☑ Week increment/decrement
+2. ☑ Yacht 1, travel ++/--
+3. ☑ Yacht 2, travel ++/--
+4. ☑ Yacht 3, travel ++/--
 5. Reset.
 
 Nice to have...
