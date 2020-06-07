@@ -9,7 +9,7 @@ on simple distance/24 weeks schedule.
 
 Looks a bit like this:
 
-![Screenshot of the User Interface](https://github.com/lancew/race/raw/master//race_2-2--607.png "UI Version 1")
+![Screenshot of the User Interface](https://github.com/lancew/race/raw/master//race_20200607.png "UI Version 1")
 
 
 
