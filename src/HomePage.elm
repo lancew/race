@@ -78,7 +78,7 @@ view model =
             [ text (repeat model.week "|||||")
             ]
         , p []
-            [ text (repeat model.yacht1Progress "-----" ++ "Yacht 1" ) ]
+            [ text (repeat model.yacht1Progress "-----" ++ "Yacht 1") ]
         , p []
             [ text (repeat model.yacht2Progress "-----" ++ "Yacht 2") ]
         , p []
@@ -90,17 +90,17 @@ view model =
             , button [ onClick DecrementWeek ] [ text "-" ]
             ]
         , p []
-            [ text ("Yacht 1 : " ++ (String.fromInt model.yacht1Progress))
+            [ text ("Yacht 1 : " ++ String.fromInt model.yacht1Progress)
             , button [ onClick IncrementYacht1 ] [ text "+" ]
             , button [ onClick DecrementYacht1 ] [ text "-" ]
             ]
         , p []
-            [ text ("Yacht 2 : " ++ (String.fromInt model.yacht2Progress))
+            [ text ("Yacht 2 : " ++ String.fromInt model.yacht2Progress)
             , button [ onClick IncrementYacht2 ] [ text "+" ]
             , button [ onClick DecrementYacht2 ] [ text "-" ]
             ]
         , p []
-            [ text ("Yacht 3 : " ++ (String.fromInt model.yacht3Progress))
+            [ text ("Yacht 3 : " ++ String.fromInt model.yacht3Progress)
             , button [ onClick IncrementYacht3 ] [ text "+" ]
             , button [ onClick DecrementYacht3 ] [ text "-" ]
             ]
