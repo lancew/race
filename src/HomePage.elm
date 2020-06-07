@@ -4,6 +4,7 @@ import Browser
 import Html exposing (Html, button, div, h1, hr, p, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
+import String exposing (repeat)
 
 
 main =
@@ -60,13 +61,12 @@ update msg model =
 
         DecrementYacht2 ->
             { model | yacht2Progress = model.yacht2Progress - 1 }
-        
+
         IncrementYacht3 ->
             { model | yacht3Progress = model.yacht3Progress + 1 }
 
         DecrementYacht3 ->
             { model | yacht3Progress = model.yacht3Progress - 1 }
-
 
 
 view : Model -> Html Msg
@@ -75,11 +75,14 @@ view model =
         [ h1 [] [ text ("The Race week: " ++ String.fromInt model.week ++ " of " ++ String.fromInt model.weeks) ]
         , hr [] []
         , p []
-            [ text ("Yacht 1: " ++ String.fromInt model.yacht1Progress) ]
+            [ text (repeat model.week "|||||")
+            ]
         , p []
-            [ text ("Yacht 2: " ++ String.fromInt model.yacht2Progress) ]
+            [ text (repeat model.yacht1Progress "-----" ++ "Yacht 1" ) ]
         , p []
-            [ text ("Yacht 3: " ++ String.fromInt model.yacht3Progress) ]
+            [ text (repeat model.yacht2Progress "-----" ++ "Yacht 2") ]
+        , p []
+            [ text (repeat model.yacht3Progress "-----" ++ "Yacht 3") ]
         , hr [] []
         , p []
             [ text "Week : "
@@ -87,17 +90,17 @@ view model =
             , button [ onClick DecrementWeek ] [ text "-" ]
             ]
         , p []
-            [ text "Yacht 1 : "
+            [ text ("Yacht 1 : " ++ (String.fromInt model.yacht1Progress))
             , button [ onClick IncrementYacht1 ] [ text "+" ]
             , button [ onClick DecrementYacht1 ] [ text "-" ]
             ]
         , p []
-            [ text "Yacht 2 : "
+            [ text ("Yacht 2 : " ++ (String.fromInt model.yacht2Progress))
             , button [ onClick IncrementYacht2 ] [ text "+" ]
             , button [ onClick DecrementYacht2 ] [ text "-" ]
             ]
         , p []
-            [ text "Yacht 3 : "
+            [ text ("Yacht 3 : " ++ (String.fromInt model.yacht3Progress))
             , button [ onClick IncrementYacht3 ] [ text "+" ]
             , button [ onClick DecrementYacht3 ] [ text "-" ]
             ]
