@@ -1,24 +1,64 @@
 module HomePage exposing (main)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
-
-
-view model =
-    div [ class "jumbotron" ]
-        [ h1 [] [ text "Welcome to Dunder Mifflin!" ]
-        , p []
-            [ text "Dunder Mifflin Inc. (stock symbol "
-            , strong [] [ text "DMI" ]
-            , text <|
-                """ 
-                ) is a micro-cap regional paper and office 
-                supply distributor with an emphasis on servicing 
-                small-business clients.
-                """
-            ]
-        ]
+import Browser
+import Html exposing (Html, button, div, h1, hr, p, text)
+import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
 
 
 main =
-    view "dummy model"
+    Browser.sandbox { init = init, update = update, view = view }
+
+
+type alias Model =
+    { weeks : Int
+    , week : Int
+    , yacht1Progress : Int
+    , yacht2Progress : Int
+    , yacht3Progress : Int
+    }
+
+
+init : Model
+init =
+    { weeks = 12
+    , week = 1
+    , yacht1Progress = 1
+    , yacht2Progress = 1
+    , yacht3Progress = 1
+    }
+
+
+type Msg
+    = IncrementWeek
+    | DecrementWeek
+
+
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        IncrementWeek ->
+            { model | week = model.week + 1 }
+
+        DecrementWeek ->
+            { model | week = model.week - 1 }
+
+
+view : Model -> Html Msg
+view model =
+    div [ class "jumbotron" ]
+        [ h1 [] [ text ("The Race week: " ++ String.fromInt model.week ++ " of " ++ String.fromInt model.weeks) ]
+        , hr [] []
+        , p []
+            [ text ("Yacht 1: " ++ String.fromInt model.yacht1Progress) ]
+        , p []
+            [ text ("Yacht 2: " ++ String.fromInt model.yacht2Progress) ]
+        , p []
+            [ text ("Yacht 3: " ++ String.fromInt model.yacht3Progress) ]
+        , hr [] []
+        , p []
+            [ text "Week : "
+            , button [ onClick IncrementWeek ] [ text "+" ]
+            , button [ onClick DecrementWeek ] [ text "-" ]
+            ]
+        ]
