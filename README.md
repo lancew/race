@@ -29,4 +29,11 @@ Building:
 git add, commit, push and then...
 
 https://htmlpreview.github.io/?https://github.com/lancew/race/blob/master/index.html
+
 ^ Lets you see the page
+
+
+Travis:
+
+https://travis-ci.org/github/lancew/race
+
