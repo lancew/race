@@ -4355,43 +4355,6 @@ function _Browser_load(url)
 		}
 	}));
 }
-
-
-
-var _Bitwise_and = F2(function(a, b)
-{
-	return a & b;
-});
-
-var _Bitwise_or = F2(function(a, b)
-{
-	return a | b;
-});
-
-var _Bitwise_xor = F2(function(a, b)
-{
-	return a ^ b;
-});
-
-function _Bitwise_complement(a)
-{
-	return ~a;
-};
-
-var _Bitwise_shiftLeftBy = F2(function(offset, a)
-{
-	return a << offset;
-});
-
-var _Bitwise_shiftRightBy = F2(function(offset, a)
-{
-	return a >> offset;
-});
-
-var _Bitwise_shiftRightZfBy = F2(function(offset, a)
-{
-	return a >>> offset;
-});
 var $author$project$HomePage$init = {week: 1, weeks: 12, yacht1Progress: 1, yacht2Progress: 1, yacht3Progress: 1};
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
@@ -5260,6 +5223,7 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$svg$Svg$Attributes$height = _VirtualDom_attribute('height');
 var $elm$html$Html$hr = _VirtualDom_node('hr');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
@@ -5279,22 +5243,17 @@ var $elm$html$Html$Events$onClick = function (msg) {
 		$elm$json$Json$Decode$succeed(msg));
 };
 var $elm$html$Html$p = _VirtualDom_node('p');
-var $elm$core$Bitwise$and = _Bitwise_and;
-var $elm$core$Bitwise$shiftRightBy = _Bitwise_shiftRightBy;
-var $elm$core$String$repeatHelp = F3(
-	function (n, chunk, result) {
-		return (n <= 0) ? result : A3(
-			$elm$core$String$repeatHelp,
-			n >> 1,
-			_Utils_ap(chunk, chunk),
-			(!(n & 1)) ? result : _Utils_ap(result, chunk));
-	});
-var $elm$core$String$repeat = F2(
-	function (n, chunk) {
-		return A3($elm$core$String$repeatHelp, n, chunk, '');
-	});
+var $elm$svg$Svg$trustedNode = _VirtualDom_nodeNS('http://www.w3.org/2000/svg');
+var $elm$svg$Svg$rect = $elm$svg$Svg$trustedNode('rect');
+var $elm$svg$Svg$Attributes$rx = _VirtualDom_attribute('rx');
+var $elm$svg$Svg$Attributes$ry = _VirtualDom_attribute('ry');
+var $elm$svg$Svg$svg = $elm$svg$Svg$trustedNode('svg');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $elm$svg$Svg$Attributes$viewBox = _VirtualDom_attribute('viewBox');
+var $elm$svg$Svg$Attributes$width = _VirtualDom_attribute('width');
+var $elm$svg$Svg$Attributes$x = _VirtualDom_attribute('x');
+var $elm$svg$Svg$Attributes$y = _VirtualDom_attribute('y');
 var $author$project$HomePage$view = function (model) {
 	return A2(
 		$elm$html$Html$div,
@@ -5314,36 +5273,75 @@ var $author$project$HomePage$view = function (model) {
 					])),
 				A2($elm$html$Html$hr, _List_Nil, _List_Nil),
 				A2(
-				$elm$html$Html$p,
-				_List_Nil,
+				$elm$svg$Svg$svg,
 				_List_fromArray(
 					[
-						$elm$html$Html$text(
-						A2($elm$core$String$repeat, model.week, '|||||'))
-					])),
-				A2(
-				$elm$html$Html$p,
-				_List_Nil,
+						$elm$svg$Svg$Attributes$width('1200'),
+						$elm$svg$Svg$Attributes$height('330'),
+						$elm$svg$Svg$Attributes$viewBox('0 0 1200 330')
+					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(
-						A2($elm$core$String$repeat, model.yacht1Progress, '-----') + 'Yacht 1')
-					])),
-				A2(
-				$elm$html$Html$p,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text(
-						A2($elm$core$String$repeat, model.yacht2Progress, '-----') + 'Yacht 2')
-					])),
-				A2(
-				$elm$html$Html$p,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text(
-						A2($elm$core$String$repeat, model.yacht3Progress, '-----') + 'Yacht 3')
+						A2(
+						$elm$svg$Svg$rect,
+						_List_fromArray(
+							[
+								$elm$svg$Svg$Attributes$x('1'),
+								$elm$svg$Svg$Attributes$y('10'),
+								$elm$svg$Svg$Attributes$width('1200'),
+								$elm$svg$Svg$Attributes$height('10')
+							]),
+						_List_Nil),
+						A2(
+						$elm$svg$Svg$rect,
+						_List_fromArray(
+							[
+								$elm$svg$Svg$Attributes$x('1'),
+								$elm$svg$Svg$Attributes$y('21'),
+								$elm$svg$Svg$Attributes$width(
+								$elm$core$String$fromInt(model.week * 100)),
+								$elm$svg$Svg$Attributes$height('10')
+							]),
+						_List_Nil),
+						A2(
+						$elm$svg$Svg$rect,
+						_List_fromArray(
+							[
+								$elm$svg$Svg$Attributes$x('1'),
+								$elm$svg$Svg$Attributes$y('33'),
+								$elm$svg$Svg$Attributes$width(
+								$elm$core$String$fromInt(model.yacht1Progress * 100)),
+								$elm$svg$Svg$Attributes$height('50'),
+								$elm$svg$Svg$Attributes$rx('15'),
+								$elm$svg$Svg$Attributes$ry('15')
+							]),
+						_List_Nil),
+						A2(
+						$elm$svg$Svg$rect,
+						_List_fromArray(
+							[
+								$elm$svg$Svg$Attributes$x('1'),
+								$elm$svg$Svg$Attributes$y('85'),
+								$elm$svg$Svg$Attributes$width(
+								$elm$core$String$fromInt(model.yacht2Progress * 100)),
+								$elm$svg$Svg$Attributes$height('50'),
+								$elm$svg$Svg$Attributes$rx('15'),
+								$elm$svg$Svg$Attributes$ry('15')
+							]),
+						_List_Nil),
+						A2(
+						$elm$svg$Svg$rect,
+						_List_fromArray(
+							[
+								$elm$svg$Svg$Attributes$x('1'),
+								$elm$svg$Svg$Attributes$y('137'),
+								$elm$svg$Svg$Attributes$width(
+								$elm$core$String$fromInt(model.yacht3Progress * 100)),
+								$elm$svg$Svg$Attributes$height('50'),
+								$elm$svg$Svg$Attributes$rx('15'),
+								$elm$svg$Svg$Attributes$ry('15')
+							]),
+						_List_Nil)
 					])),
 				A2($elm$html$Html$hr, _List_Nil, _List_Nil),
 				A2(
