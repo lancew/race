@@ -24,9 +24,9 @@
       })
 
       app.ports.sendData.subscribe(function (data) {
-        var res = data.split(":");
-        console.log(res);
-        localStorage.setItem(res[0], res[1]);
+        let json = JSON.stringify(data)
+        console.log(json);
+        localStorage.setItem('app', json);
 
       })
     </script>

@@ -9,7 +9,7 @@ import Svg exposing (..)
 import Svg.Attributes exposing (..)
 
 
-port sendData : String -> Cmd msg
+port sendData : Model -> Cmd msg
 
 
 main : Program () Model Msg
@@ -54,31 +54,35 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         IncrementWeek ->
-            ( { model | week = model.week + 1 }, sendData ("Week:" ++ String.fromInt (model.week + 1)) )
+            ( { model | week = model.week + 1 }, sendData { model | week = model.week + 1 } )
 
         DecrementWeek ->
-            ( { model | week = model.week - 1 }, sendData ("Week:" ++ String.fromInt (model.week - 1)) )
+            ( { model | week = model.week - 1 }, sendData { model | week = model.week - 1 } )
 
         IncrementYacht1 ->
-            ( { model | yacht1Progress = model.yacht1Progress + 1 }, sendData ("Yacht1:" ++ String.fromInt (model.yacht1Progress + 1)) )
+            ( { model | yacht1Progress = model.yacht1Progress + 1 }, sendData { model | yacht1Progress = model.yacht1Progress + 1 } )
 
         DecrementYacht1 ->
-            ( { model | yacht1Progress = model.yacht1Progress - 1 }, sendData ("Yacht1:" ++ String.fromInt (model.yacht1Progress - 1)) )
+            ( { model | yacht1Progress = model.yacht1Progress - 1 }, sendData { model | yacht1Progress = model.yacht1Progress - 1 } )
 
         IncrementYacht2 ->
-            ( { model | yacht2Progress = model.yacht2Progress + 1 }, sendData ("Yacht2:" ++ String.fromInt (model.yacht2Progress + 1)) )
+            ( { model | yacht2Progress = model.yacht2Progress + 1 }, sendData { model | yacht2Progress = model.yacht2Progress + 1 } )
 
         DecrementYacht2 ->
-            ( { model | yacht2Progress = model.yacht2Progress - 1 }, sendData ("Yacht2:" ++ String.fromInt (model.yacht2Progress - 1)) )
+            ( { model | yacht2Progress = model.yacht2Progress - 1 }, sendData { model | yacht2Progress = model.yacht2Progress - 1 } )
 
         IncrementYacht3 ->
-            ( { model | yacht3Progress = model.yacht3Progress + 1 }, sendData ("Yacht3:" ++ String.fromInt (model.yacht3Progress + 1)) )
+            ( { model | yacht3Progress = model.yacht3Progress + 1 }, sendData { model | yacht3Progress = model.yacht3Progress + 1 } )
 
         DecrementYacht3 ->
-            ( { model | yacht3Progress = model.yacht3Progress - 1 }, sendData ("Yacht3:" ++ String.fromInt (model.yacht3Progress - 1)) )
+            ( { model | yacht3Progress = model.yacht3Progress - 1 }, sendData { model | yacht3Progress = model.yacht3Progress - 1 } )
 
         ResetAll ->
-            ( { model | week = 1, yacht1Progress = 1, yacht2Progress = 1, yacht3Progress = 1 }, Cmd.none )
+            ( { model | week = 1, yacht1Progress = 1, yacht2Progress = 1, yacht3Progress = 1 }, sendData { model | week = 1, yacht1Progress = 1, yacht2Progress = 1, yacht3Progress = 1 } )
+
+
+pushData model =
+    sendData model
 
 
 view : Model -> Html Msg
