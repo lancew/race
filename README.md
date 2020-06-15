@@ -13,7 +13,7 @@ Looks a bit like this:
 
 
 
-UI... 
+UI...
 1. ☑ Week increment/decrement
 2. ☑ Yacht 1, travel ++/--
 3. ☑ Yacht 2, travel ++/--
@@ -21,8 +21,8 @@ UI...
 5. ☑ Reset.
 
 Nice to have...
-1. Persistant storage in browser
-2. Persistence storage via API
+☑ 1. Persistant storage in browser
+☑ 2. Persistence storage via API
 
 Lets go!!
 
