@@ -18,16 +18,18 @@
 
     <script src="elm.js"></script>
     <script>
-      var flags = { weeks: 12 }
+      var storedData = localStorage.getItem('app')
+      var flags = storedData ? JSON.parse(storedData) : null
+
       var app = Elm.HomePage.init({
-        node: document.getElementById('elm-app-is-loaded-here')
+        node: document.getElementById('elm-app-is-loaded-here'),
+        flags: flags
       })
 
       app.ports.sendData.subscribe(function (data) {
         let json = JSON.stringify(data)
-        console.log(json);
-        localStorage.setItem('app', json);
-
+        console.log(json)
+        localStorage.setItem('app', json)
       })
     </script>
   </body>

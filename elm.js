@@ -5144,12 +5144,34 @@ var $elm$core$Task$perform = F2(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$element = _Browser_element;
+var $elm$json$Json$Decode$decodeValue = _Json_run;
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
-var $author$project$HomePage$init = function (_v0) {
-	return _Utils_Tuple2(
-		{week: 1, weeks: 12, yacht1Progress: 1, yacht2Progress: 1, yacht3Progress: 1},
-		$elm$core$Platform$Cmd$none);
+var $author$project$HomePage$Model = F5(
+	function (weeks, week, yacht1Progress, yacht2Progress, yacht3Progress) {
+		return {week: week, weeks: weeks, yacht1Progress: yacht1Progress, yacht2Progress: yacht2Progress, yacht3Progress: yacht3Progress};
+	});
+var $elm$json$Json$Decode$field = _Json_decodeField;
+var $elm$json$Json$Decode$int = _Json_decodeInt;
+var $elm$json$Json$Decode$map5 = _Json_map5;
+var $author$project$HomePage$settingsDecoder = A6(
+	$elm$json$Json$Decode$map5,
+	$author$project$HomePage$Model,
+	A2($elm$json$Json$Decode$field, 'weeks', $elm$json$Json$Decode$int),
+	A2($elm$json$Json$Decode$field, 'week', $elm$json$Json$Decode$int),
+	A2($elm$json$Json$Decode$field, 'yacht1Progress', $elm$json$Json$Decode$int),
+	A2($elm$json$Json$Decode$field, 'yacht2Progress', $elm$json$Json$Decode$int),
+	A2($elm$json$Json$Decode$field, 'yacht2Progress', $elm$json$Json$Decode$int));
+var $author$project$HomePage$init = function (flags) {
+	var _v0 = A2($elm$json$Json$Decode$decodeValue, $author$project$HomePage$settingsDecoder, flags);
+	if (_v0.$ === 'Ok') {
+		var model = _v0.a;
+		return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+	} else {
+		return _Utils_Tuple2(
+			{week: 1, weeks: 12, yacht1Progress: 1, yacht2Progress: 1, yacht3Progress: 1},
+			$elm$core$Platform$Cmd$none);
+	}
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
@@ -5276,6 +5298,7 @@ var $author$project$HomePage$update = F2(
 							{week: 1, yacht1Progress: 1, yacht2Progress: 1, yacht3Progress: 1})));
 		}
 	});
+var $elm$json$Json$Decode$value = _Json_decodeValue;
 var $author$project$HomePage$DecrementWeek = {$: 'DecrementWeek'};
 var $author$project$HomePage$DecrementYacht1 = {$: 'DecrementYacht1'};
 var $author$project$HomePage$DecrementYacht2 = {$: 'DecrementYacht2'};
@@ -5562,5 +5585,4 @@ var $author$project$HomePage$main = $elm$browser$Browser$element(
 		update: $author$project$HomePage$update,
 		view: $author$project$HomePage$view
 	});
-_Platform_export({'HomePage':{'init':$author$project$HomePage$main(
-	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
+_Platform_export({'HomePage':{'init':$author$project$HomePage$main($elm$json$Json$Decode$value)(0)}});}(this));

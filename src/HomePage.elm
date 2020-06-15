@@ -4,6 +4,8 @@ import Browser
 import Html exposing (Html, button, div, h1, hr, p, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
+import Json.Decode as D
+import Json.Encode as E
 import String exposing (fromInt)
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
@@ -12,7 +14,6 @@ import Svg.Attributes exposing (..)
 port sendData : Model -> Cmd msg
 
 
-main : Program () Model Msg
 main =
     Browser.element { init = init, update = update, view = view, subscriptions = \_ -> Sub.none }
 
@@ -26,16 +27,30 @@ type alias Model =
     }
 
 
-init : () -> ( Model, Cmd Msg )
-init _ =
-    ( { weeks = 12
-      , week = 1
-      , yacht1Progress = 1
-      , yacht2Progress = 1
-      , yacht3Progress = 1
-      }
-    , Cmd.none
-    )
+settingsDecoder : D.Decoder Model
+settingsDecoder =
+    D.map5 Model
+        (D.field "weeks" D.int)
+        (D.field "week" D.int)
+        (D.field "yacht1Progress" D.int)
+        (D.field "yacht2Progress" D.int)
+        (D.field "yacht2Progress" D.int)
+
+
+init flags =
+    case D.decodeValue settingsDecoder flags of
+        Ok model ->
+            ( model, Cmd.none )
+
+        Err _ ->
+            ( { weeks = 12
+              , week = 1
+              , yacht1Progress = 1
+              , yacht2Progress = 1
+              , yacht3Progress = 1
+              }
+            , Cmd.none
+            )
 
 
 type Msg
